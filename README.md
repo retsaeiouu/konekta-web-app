@@ -7,7 +7,7 @@ _I'm only doing this project to learn, I will keep this open-source so others ca
 
 ---
 
-# GETTING STARTED
+## GETTING STARTED
 
 _NOTE: There's nothing much to see here yet, i just started out this guide early so i won't have to remember all of these later_
 
