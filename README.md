@@ -52,4 +52,4 @@ NODE_ENV=dev ./run-migration.sh
 npm run dev
 ```
 
-run `NODE_ENV=dev down-compose.sh` in `api/` to stop the docker compose instance
+run `NODE_ENV=dev down-compose.sh` to stop the docker compose instance
