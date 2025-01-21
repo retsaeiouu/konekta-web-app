@@ -34,7 +34,7 @@ npm i
 # make sure you are at the root directory of the project (not in frontend or api directory)
 
 # for linux and mac
-chmod +x run-compose.sh && chmod +x api/run-migration.sh
+chmod +x run-compose.sh && chmod +x down-compose.sh && chmod +x api/run-migration.sh
 
 # this will create a new postgres container with credentials based on the .env file
 NODE_ENV=dev ./run-compose.sh
@@ -51,3 +51,5 @@ NODE_ENV=dev ./run-migration.sh
 # navigate to each of their directories and run:
 npm run dev
 ```
+
+run `NODE_ENV=dev down-compose.sh` in `api/` to stop the docker compose instance
