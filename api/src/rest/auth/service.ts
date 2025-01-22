@@ -9,8 +9,14 @@ export default class Service {
     this.repository = new AuthRepository();
   }
 
-  public createNewAccount = async (payload: SignUp) => {
-    await this.repository.insertAccount(payload);
-    return new ResponseObject(201, "Account created.", null);
+  public createNewAccount: (
+    payload: SignUp,
+  ) => Promise<ResponseObject<string>> = async (payload) => {
+    const {
+      status,
+      message,
+      payload: id,
+    } = await this.repository.insertAccount(payload);
+    return new ResponseObject(status, message, id);
   };
 }
