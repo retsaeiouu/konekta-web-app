@@ -4,7 +4,10 @@
   "main": "src/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "NODE_ENV=dev npx tsx watch --clear-screen=false --exclude \"./node_modules/**/*\" ./src/index.ts"
+    "dev": "NODE_ENV=dev npx tsx watch --clear-screen=false --exclude \"./node_modules/**/*\" ./src/index.ts",
+    "up-compose": "docker-compose --env-file ../.env.${NODE_ENV:-dev} up -d",
+    "down-compose": "docker-compose --env-file ../.env.${NODE_ENV:-dev} down",
+    "db-migrate": "npx dotenv -e ../.env.${NODE_ENV:-dev} -- npx prisma migrate dev"
   },
   "author": "",
   "license": "ISC",

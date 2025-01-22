@@ -4,8 +4,7 @@ import "./index.css";
 import { BrowserRouter, Route, Routes } from "react-router";
 import Home from "./features/home/pages/Home.tsx";
 
-// TODO: setup api
-// TODO: implement jwt auth
+// TODO: write tests with vitest and cypress
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

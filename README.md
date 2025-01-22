@@ -15,7 +15,6 @@ _NOTE: There's nothing much to see here yet, i just started out this guide early
 
 - docker and docker compose
 - git
-- git bash or wsl (for git clone and executing bash scripts) FOR WINDOWS ONLY
 - node and npm
 
 **1. Clone and install dependencies**
@@ -31,18 +30,17 @@ npm i
 **2. Setup database with compose and prisma**
 
 ```bash
-# make sure you are at the root directory of the project (not in frontend or api directory)
-
-# for linux and mac
-chmod +x run-compose.sh && chmod +x down-compose.sh && chmod +x api/run-migration.sh
-
-# this will create a new postgres container with credentials based on the .env file
-NODE_ENV=dev ./run-compose.sh
-
+# Go to api/ directory
 cd api/
 
+# this will create a new postgres container with credentials based on the environment, test and prod environments are still unavailable
+npm run up-compose
+
 # create tables in the database based on the models defined in schema.prisma
-NODE_ENV=dev ./run-migration.sh
+npm run db-migrate
+
+# to stop the docker compose instance, run:
+npm run down-compose
 ```
 
 **3. Running the frontend and backend**
@@ -51,5 +49,3 @@ NODE_ENV=dev ./run-migration.sh
 # navigate to each of their directories and run:
 npm run dev
 ```
-
-run `NODE_ENV=dev down-compose.sh` to stop the docker compose instance
