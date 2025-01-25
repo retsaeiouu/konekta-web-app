@@ -49,3 +49,17 @@ npm run down-compose
 # navigate to each of their directories and run:
 npm run dev
 ```
+
+---
+
+## TROUBLESHOOTING
+
+If you encounter this error, or something similar while running `npm run up-compose`:
+
+```
+unable to get image 'postgres:17': permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.47/images/postgres:17/json": dial unix /var/run/docker.sock: connect: permission denied
+```
+
+try to run the script again with `sudo`.
+
+_You're free to open up issues anytime incase you have encountered one [here](https://github.com/retsaeiouu/konekta-web-app/issues)_
