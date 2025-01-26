@@ -15,7 +15,3 @@ model Account {
   name      String
   surname   String?
 }
-
-model Missu {
-  when DateTime @id @default(now())
-}

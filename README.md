@@ -20,6 +20,7 @@ _NOTE: There's nothing much to see here yet, i just started out this guide early
 
 ```bash
 git clone https://github.com/retsaeiouu/konekta-web-app.git
+cd konekta-web-app/
 ```
 
 **2. Setup environment variables**
