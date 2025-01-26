@@ -15,51 +15,42 @@ _NOTE: There's nothing much to see here yet, i just started out this guide early
 
 - docker and docker compose
 - git
-- node and npm
 
-**1. Clone and install dependencies**
+**1. Clone the repository**
 
 ```bash
 git clone https://github.com/retsaeiouu/konekta-web-app.git
-cd konekta-web-app/frontend/
-npm i
-cd ../api/
-npm i
 ```
 
-**2. Setup database with compose and prisma**
+**2. Setup environment variables**
+
+create a `.env.dev` file and paste the snippet below (modify it if you want)
 
 ```bash
-# Go to api/ directory
-cd api/
+# POSTGRES CONTAINER CREDENTIALS
+POSTGRES_USER=name
+POSTGRES_PASSWORD=password
+POSTGRES_DB=dbname
 
-# this will create a new postgres container with credentials based on the environment, test and prod environments are still unavailable
-npm run up-compose
+# URL STRING FOR PRISMA (schema is public by default if omitted)
+DATABASE_URL=postgresql://name:password@db:5432/dbname?schema=public
 
-# create tables in the database based on the models defined in schema.prisma
-npm run db-migrate
+# API PORT (express endpoint)
+PORT=3000
 
-# to stop the docker compose instance, run:
-npm run down-compose
+# JWT SECRET KEY FOR SIGNING AND DECODING (you can generate your own secrets here if u want: https://jwtsecret.com/generate)
+JWT_SECRET=mysecretisimissher
 ```
 
-**3. Running the frontend and backend**
+**3. Spin up the docker containers**
 
 ```bash
-# navigate to each of their directories and run:
-npm run dev
+# try to run this with 'sudo' if it didn't work
+docker compose --env-file ./.env.dev -f docker-compose.yml -f docker-compose.dev.yml up -d
 ```
 
 ---
 
-## TROUBLESHOOTING
-
-If you encounter this error, or something similar while running `npm run up-compose`:
-
-```
-unable to get image 'postgres:17': permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.47/images/postgres:17/json": dial unix /var/run/docker.sock: connect: permission denied
-```
-
-try to run the script again with `sudo`.
+## ISSUES
 
 _You're free to open up issues anytime incase you have encountered one [here](https://github.com/retsaeiouu/konekta-web-app/issues)_

@@ -1,0 +1,18 @@
+services:
+  db:
+    volumes:
+      - devkonekta:/var/lib/postgresql/data
+
+  migrate:
+    environment:
+      DATABASE_URL: ${DATABASE_URL}
+
+  api:
+    environment:
+      NODE_ENV: dev
+    volumes:
+      - ./api:/app
+    command: ["npm", "run", "dev"]
+
+volumes:
+  devkonekta:

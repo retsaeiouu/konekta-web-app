@@ -1,6 +1,3 @@
-import dotenv from "dotenv";
-dotenv.config({ path: `../.env.${process.env.NODE_ENV}` });
-
 import jwt from "jsonwebtoken";
 import { TokenPayload } from "../models/JWT";
 
