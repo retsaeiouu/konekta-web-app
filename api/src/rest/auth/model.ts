@@ -1,5 +1,5 @@
-import { z } from "zod";
-import { AccountZodSchema } from "../../shared/models/Account";
+import { z } from 'zod';
+import { AccountZodSchema } from '../../shared/models/Account';
 
 export const SignUpZodSchema = AccountZodSchema.omit({
   id: true,

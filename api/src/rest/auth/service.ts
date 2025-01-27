@@ -1,6 +1,6 @@
-import { ResponseObject } from "../../shared/DTO/response";
-import { SignUp } from "./model";
-import AuthRepository from "./repository";
+import { ResponseObject } from '../../shared/DTO/response';
+import { SignUp } from './model';
+import AuthRepository from './repository';
 
 export default class Service {
   private repository;
@@ -10,7 +10,7 @@ export default class Service {
   }
 
   public createNewAccount: (
-    payload: SignUp,
+    payload: SignUp
   ) => Promise<ResponseObject<string>> = async (payload) => {
     const {
       status,

@@ -14,5 +14,13 @@ services:
       - ./api:/app
     command: ["npm", "run", "dev"]
 
+  
+  app:
+    environment:
+      NODE_ENV: dev
+    volumes:
+      - ./frontend:/app
+    command: ["npm", "run", "dev"]
+
 volumes:
   devkonekta:

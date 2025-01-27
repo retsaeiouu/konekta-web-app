@@ -1,14 +1,14 @@
-import { ErrorRequestHandler } from "express";
-import { ErrorObject } from "./DTO/error";
-import { ResponseObject } from "./DTO/response";
-import { Prisma } from "@prisma/client";
+import { ErrorRequestHandler } from 'express';
+import { ErrorObject } from './DTO/error';
+import { ResponseObject } from './DTO/response';
+import { Prisma } from '@prisma/client';
 
 // https://expressjs.com/en/guide/error-handling.html
 export const errorHandler: ErrorRequestHandler = (
   error,
   _request,
   response,
-  next,
+  next
 ) => {
   if (response.headersSent) {
     next(error);
@@ -18,12 +18,12 @@ export const errorHandler: ErrorRequestHandler = (
   // https://www.prisma.io/docs/orm/prisma-client/debugging-and-troubleshooting/handling-exceptions-and-errors
   if (error instanceof Prisma.PrismaClientKnownRequestError) {
     // if an existing value is inserted in a unique column
-    if (error.code === "P2002") {
+    if (error.code === 'P2002') {
       // if an existing username is inserted
-      if ((error.meta as { target?: string[] }).target?.at(0) === "username") {
+      if ((error.meta as { target?: string[] }).target?.at(0) === 'username') {
         response
           .status(400)
-          .json(new ResponseObject(400, "Username already exists.", null));
+          .json(new ResponseObject(400, 'Username already exists.', null));
         return;
       }
     }
@@ -40,6 +40,6 @@ export const errorHandler: ErrorRequestHandler = (
   console.error(error);
   response
     .status(500)
-    .json(new ResponseObject(500, "Unexpected server error.", null));
+    .json(new ResponseObject(500, 'Unexpected server error.', null));
   return;
 };

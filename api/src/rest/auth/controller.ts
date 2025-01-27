@@ -1,9 +1,9 @@
-import AuthService from "./service";
-import { RequestHandler } from "express";
-import { ResponseObject } from "../../shared/DTO/response";
-import parsePayload from "../../shared/utilities/zodSchemaParser";
-import { SignUpZodSchema } from "./model";
-import { generateToken } from "../../shared/utilities/JWT";
+import AuthService from './service';
+import { RequestHandler } from 'express';
+import { ResponseObject } from '../../shared/DTO/response';
+import parsePayload from '../../shared/utilities/zodSchemaParser';
+import { SignUpZodSchema } from './model';
+import { generateToken } from '../../shared/utilities/JWT';
 
 export default class Controller {
   private service;
@@ -28,10 +28,10 @@ export default class Controller {
     const token = await generateToken({ id });
 
     // serializes the token in the cookie header
-    response.cookie("access_token", token, {
-      httpOnly: process.env.NODE_ENV === "prod",
+    response.cookie('access_token', token, {
+      httpOnly: process.env.NODE_ENV === 'prod',
       sameSite: true,
-      secure: process.env.NODE_ENV === "prod",
+      secure: process.env.NODE_ENV === 'prod',
     });
 
     response.status(status).json(new ResponseObject(status, message, null));
