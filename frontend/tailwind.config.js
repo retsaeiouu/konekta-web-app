@@ -13,6 +13,7 @@ export default {
         foreground: '#1c1c1c',
         primary: '#6C698D',
         secondary: '#6E6A6F',
+        destructive: '#9e4646'
       },
     },
   },

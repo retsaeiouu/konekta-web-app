@@ -5,21 +5,29 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "npx tsx watch --clear-screen=false --exclude \"./node_modules/**/*\" ./src/index.ts",
-    "db-migrate": "npx prisma migrate deploy",
+    "db-push": "npx prisma db push",
+    "prisma-generate": "npx prisma generate",
     "format": "npx prettier --write .",
-    "lint": "npx eslint ."
+    "lint": "npx eslint .",
+    "build": "npx babel --extensions \".ts\" ./src --out-dir ./dist",
+    "start": "node ./dist/index.js"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
     "@prisma/client": "^6.2.1",
+    "core-js": "^3.40.0",
     "cors": "^2.8.5",
     "express": "^5.0.1",
     "jsonwebtoken": "^9.0.2",
     "zod": "^3.24.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.26.4",
+    "@babel/core": "^7.26.7",
+    "@babel/preset-env": "^7.26.7",
+    "@babel/preset-typescript": "^7.26.0",
     "@eslint/js": "^9.19.0",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",

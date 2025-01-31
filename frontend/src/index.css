@@ -6,11 +6,27 @@
   body {
     @apply m-0 p-0;
   }
+
+  input {
+    @apply outline-none;
+  }
 }
 
 @layer components {
   .page-container {
     @apply flex flex-col items-center h-screen w-screen bg-background;
+  }
+
+  .form-label {
+    @apply text-center text-primary text-base lg:text-lg;
+  }
+
+  .form-input {
+    @apply outline-none text-center bg-transparent border-b-primary border-b-2 text-foreground text-lg lg:text-xl;
+  }
+
+  .form-error {
+    @apply text-sm lg:text-base text-center text-destructive;
   }
 }
 

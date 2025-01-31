@@ -1,0 +1,36 @@
+services:
+  db:
+    volumes:
+      - devkonekta:/var/lib/postgresql/data
+    ports:
+      # some machine have postgres installed which uses port 5432, so i'll just map this to 5433
+      - "5433:5432"
+
+  migrate:
+    environment:
+      DATABASE_URL: ${DATABASE_URL}
+    entrypoint: ["sh", "-c", "npm run db-push && npm run prisma-generate"]
+
+  api:
+    environment:
+      NODE_ENV: development
+    volumes:
+      - ./api:/app
+    command: ["npm", "run", "dev"]
+    ports:
+      - "3000:3000"
+      # maps the prisma studio port from the container to the host port
+      - "5555:5555"
+
+  app:
+    restart: unless-stopped
+    environment:
+      NODE_ENV: development
+    volumes:
+      - ./frontend:/app
+    command: ["npm", "run", "dev"]
+    ports:
+      - "5173:5173"
+
+volumes:
+  devkonekta:

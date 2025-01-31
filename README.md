@@ -25,7 +25,7 @@ cd konekta-web-app/
 
 **2. Setup environment variables**
 
-create a `.env.dev` file and paste the snippet below (modify it if you want)
+create a `.env.development` file and paste the snippet below (modify it if you want)
 
 ```bash
 # POSTGRES CONTAINER CREDENTIALS
@@ -41,14 +41,24 @@ PORT=3000
 
 # JWT SECRET KEY FOR SIGNING AND DECODING (you can generate your own secrets here if u want: https://jwtsecret.com/generate)
 JWT_SECRET=mysecretisimissher
+
+# API BASE URL FOR FRONTEND (use the service name instead of localhost, docker compose uses service names as their hostname)
+# see https://docs.docker.com/compose/how-tos/networking/
+VITE_API_URL=http://api:3000/api
 ```
+
+_why `.env.developpment`?_ check [env-sample](https://github.com/retsaeiouu/konekta-web-app/blob/main/.env-sample)
 
 **3. Spin up the docker containers**
 
 ```bash
-# try to run this with 'sudo' if it didn't work
-docker compose --env-file ./.env.dev -f docker-compose.yml -f docker-compose.dev.yml up -d
+# try to run this with 'sudo' if it didn't work, older version uses docker-compose.
+docker compose --env-file ./.env.development -f docker-compose.yml -f docker-compose.development.yml up -d
 ```
+
+**4. Go to [http://localhost:5173](http://localhost:5173) on your browser to check the app**
+
+_p.s. You can edit the source code while the containers are running on development mode._
 
 ---
 
