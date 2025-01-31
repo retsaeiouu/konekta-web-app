@@ -42,12 +42,11 @@ PORT=3000
 # JWT SECRET KEY FOR SIGNING AND DECODING (you can generate your own secrets here if u want: https://jwtsecret.com/generate)
 JWT_SECRET=mysecretisimissher
 
-# API BASE URL FOR FRONTEND (use the service name instead of localhost, docker compose uses service names as their hostname)
-# see https://docs.docker.com/compose/how-tos/networking/
-VITE_API_URL=http://api:3000/api
+# API BASE URL FOR FRONTEND
+VITE_API_URL=http://localhost:3000/api
 ```
 
-_why `.env.developpment`?_ check [env-sample](https://github.com/retsaeiouu/konekta-web-app/blob/main/.env-sample)
+_why `.env.development`?_ check [env-sample](https://github.com/retsaeiouu/konekta-web-app/blob/main/.env-sample)
 
 **3. Spin up the docker containers**
 
