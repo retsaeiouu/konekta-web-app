@@ -1,21 +1,26 @@
+import { Account } from '../../shared/models/Account';
 import { ResponseObject } from '../../shared/DTO/response';
 import { prismaClient } from '../../shared/prismaInit';
-import { SignUp } from './model';
+import { SignUp } from './models';
 
 export default class Repository {
   private db;
 
-  constructor() {
-    this.db = prismaClient;
+  constructor(db: typeof prismaClient) {
+    this.db = db;
   }
 
-  public insertAccount: (payload: SignUp) => Promise<ResponseObject<string>> =
-    async (payload) => {
-      const account = await this.db.account.create({ data: payload });
-      return new ResponseObject(
-        201,
-        'Account created successfully.',
-        account.id
-      );
-    };
+  // inserts and returns the new account
+  public insertAccount = async (
+    payload: SignUp
+  ): Promise<ResponseObject<Account>> => {
+    const createdAccount: Account = await this.db.account.create({
+      data: payload,
+    });
+    return new ResponseObject<Account>(
+      201,
+      'Account created successfully.',
+      createdAccount
+    );
+  };
 }

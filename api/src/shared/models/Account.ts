@@ -12,7 +12,7 @@ export const AccountZodSchema = z.object({
   username: z.string(),
   password: z.string(),
   name: z.string(),
-  surname: z.optional(z.string()),
+  surname: z.nullable(z.string()),
 });
 
 export type Account = z.infer<typeof AccountZodSchema>;

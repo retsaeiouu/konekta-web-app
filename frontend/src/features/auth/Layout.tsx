@@ -8,6 +8,7 @@ const AuthLayout = () => {
           Konekta
         </div>
         {/* TODO: add description, sign in/up navigation */}
+        {/* TODO: add a validator that checks if request is already authenticated */}
       </div>
       <div className="w-full px-12 md:w-3/5 lg:w-1/3">
         <Outlet />

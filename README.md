@@ -55,6 +55,9 @@ _why `.env.development`?_ check [env-sample](https://github.com/retsaeiouu/konek
 docker compose --env-file ./.env.development -f docker-compose.yml -f docker-compose.development.yml up -d
 ```
 
+_why multiple `docker-compose` files?_ to separate each specific configurations on modes such as **development** or **testing**
+for more clarifications on how multiple compose file merges, see [How to merge multiple Compose files](https://docs.docker.com/compose/how-tos/multiple-compose-files/merge/#how-to-merge-multiple-compose-files)
+
 **4. Go to [http://localhost:5173](http://localhost:5173) on your browser to check the app**
 
 _p.s. You can edit the source code while the containers are running on development mode._
