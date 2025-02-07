@@ -2,14 +2,13 @@
 
 **Konekta** will be a web-based social app that will implement some common social media applications features such as Account personalization, posts creation and interaction, chats, and more.
 
-**NOTE:**
-_I'm only doing this project to learn, I will keep this open-source so others can learn or fork, i plan to containerized this with docker so it will work on any machine and environments_
+**NOTE:** _I'm only doing this project to learn, I will keep this open-source so others can learn or fork, i plan to containerized this with docker so it will work on any machine and environments_
 
 ---
 
 ## GETTING STARTED
 
-_NOTE: There's nothing much to see here yet, i just started out this guide early so i won't have to remember all of these later_
+**NOTE:** _There's nothing much to see here yet, i just started out this guide early so i won't have to remember all of these later_
 
 **requirements:**
 
@@ -46,7 +45,7 @@ JWT_SECRET=mysecretisimissher
 VITE_API_URL=http://localhost:3000/api
 ```
 
-_why `.env.development`?_ check [env-sample](https://github.com/retsaeiouu/konekta-web-app/blob/main/.env-sample)
+_why `.env.development`? check [env-sample](https://github.com/retsaeiouu/konekta-web-app/blob/main/.env-sample)_
 
 **3. Spin up the docker containers**
 
@@ -55,8 +54,9 @@ _why `.env.development`?_ check [env-sample](https://github.com/retsaeiouu/konek
 docker compose --env-file ./.env.development -f docker-compose.yml -f docker-compose.development.yml up -d
 ```
 
-_why multiple `docker-compose` files?_ to separate each specific configurations on modes such as **development** or **testing**
-for more clarifications on how multiple compose file merges, see [How to merge multiple Compose files](https://docs.docker.com/compose/how-tos/multiple-compose-files/merge/#how-to-merge-multiple-compose-files)
+_why multiple `docker-compose` files? to separate each specific configurations on modes such as **development** or **testing**._
+
+_for more clarifications on how multiple compose file merges, see [How to merge multiple Compose files](https://docs.docker.com/compose/how-tos/multiple-compose-files/merge/#how-to-merge-multiple-compose-files)_
 
 **4. Go to [http://localhost:5173](http://localhost:5173) on your browser to check the app**
 

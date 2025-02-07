@@ -3,9 +3,10 @@ import AuthController from './controller';
 import AuthService from './service';
 import AuthRepository from './repository';
 import { prismaClient } from '../../shared/prismaInit';
+import schemaValidator from '../../shared/utilities/zodSchemaParser';
 
 const repository = new AuthRepository(prismaClient);
-const service = new AuthService(repository);
+const service = new AuthService(repository, schemaValidator);
 const controller = new AuthController(service);
 
 const router = express.Router();

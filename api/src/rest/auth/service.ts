@@ -1,14 +1,16 @@
 import { Account } from '../../shared/models/Account';
 import { ResponseObject } from '../../shared/DTO/response';
-import parsePayload from '../../shared/utilities/zodSchemaParser';
+import schemaValidator from '../../shared/utilities/zodSchemaParser';
 import { SignUp, SignUpZodSchema } from './models';
 import AuthRepository from './repository';
 
 export default class Service {
   private repository;
+  private validator;
 
-  constructor(repository: AuthRepository) {
+  constructor(repository: AuthRepository, validator: typeof schemaValidator) {
     this.repository = repository;
+    this.validator = validator;
   }
 
   // calls insert method and returns the created account id
@@ -16,7 +18,7 @@ export default class Service {
     payload: unknown
   ): Promise<ResponseObject<string>> => {
     // validates the request payload against the expected schema and throws if its invalid
-    const parsedPayload: SignUp = parsePayload(payload, SignUpZodSchema);
+    const parsedPayload: SignUp = this.validator(payload, SignUpZodSchema);
     const {
       status,
       message,

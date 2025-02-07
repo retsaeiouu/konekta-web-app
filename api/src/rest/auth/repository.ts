@@ -1,12 +1,12 @@
 import { Account } from '../../shared/models/Account';
 import { ResponseObject } from '../../shared/DTO/response';
-import { prismaClient } from '../../shared/prismaInit';
+import { type prismaClient } from '../../shared/prismaInit';
 import { SignUp } from './models';
 
 export default class Repository {
   private db;
 
-  constructor(db: typeof prismaClient) {
+  constructor(db: prismaClient) {
     this.db = db;
   }
 

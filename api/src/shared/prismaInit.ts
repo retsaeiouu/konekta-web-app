@@ -7,3 +7,5 @@ export const prismaClient = new PrismaClient({
     },
   },
 });
+
+export type prismaClient = typeof prismaClient;
